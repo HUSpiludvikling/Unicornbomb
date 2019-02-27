@@ -15,4 +15,5 @@ MonoBehaviour:
   Linjer_af_tekst:
   - Der var en gang..
   - "En enhj\xF8rning der hed Gerda"
-  Billeder: []
+  Billeder:
+  - {fileID: 21300000, guid: 06cb9c1a32c978d41a5099d4e4cdaced, type: 3}
