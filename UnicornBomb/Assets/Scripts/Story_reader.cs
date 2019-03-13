@@ -11,22 +11,49 @@ public class Story_reader : MonoBehaviour
     public Story story;
     private Text text;
     private Image image;
+    private Button button;
 
     int index = default(int);
 
     private void Start()
     {
+        button = GetComponentInChildren<Button>();
+        button.gameObject.SetActive(false);
         text = GetComponentInChildren<Text>();
         image = GetComponentInChildren<Image>();
-        SetTextImage();
+        SetTextImage(ref index);
         
 
     }
 
-    private void SetTextImage()
+    private void Update()
     {
-        text.text = story.Linjer_af_tekst[0];
-        image.sprite = story.Billeder[0];
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            SetTextImage(ref index);
+
+            if (story.Linjer_af_tekst.Count <= index && story.Billeder.Count <= index)
+            {
+                button.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    private void SetTextImage(ref int textlinje)
+    {
+        try
+        {
+            text.text = story.Linjer_af_tekst[textlinje];
+            image.sprite = story.Billeder[textlinje];
+        }
+        catch (System.ArgumentOutOfRangeException)
+        {
+
+            
+        }
+
+        textlinje++;
+
     }
 }
 
