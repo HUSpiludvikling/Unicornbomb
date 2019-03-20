@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     public Rigidbody2D Rb;
     [Range(0.5f,40f)]
     public float SpeedMod;
+    public float JumpSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,10 @@ public class Movement : MonoBehaviour
         if (Input.GetAxis("Horizontal") != 0)
         {
             Rb.AddForce(Vector2.left * -Input.GetAxis("Horizontal") * SpeedMod, ForceMode2D.Force);
-        } 
+        }
+        if (Input.GetButtonDown("Jump"))
+        {
+            Rb.AddForce(Vector2.up * JumpSpeed, ForceMode2D.Force);
+        }
     }
 }
